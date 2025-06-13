@@ -1,10 +1,10 @@
 /*
- *  Created on: Mar 15, 2025
+ *  Created on: June 13, 2025
  *  Author: BalazsFarkas
- *  Project: STM32_TouchI2C_FMSC
- *  Processor: STM32F412ZG
+ *  Project: STM32_BLE_Custom_Server_Read
+ *  Processor: STM32WB55MM
  *  Program version: 1.0
- *  File: I2CDriver_STM32F4xx.c
+ *  File: I2CDriver_STM32WB55MM.c
  *  Change history:
  */
 
@@ -25,6 +25,8 @@
 //1) Initialization
 void I2CConfig(uint8_t dev_own_addr) {
 
+	//code removed in favour of using HAL
+	
 	/*
 	 * What happens here?
 	 * First, we do the usual by setting the clocking (we enable it, but also choose it to be APB1!), followed by the GPIO setup. We put pull-ups on both the pins.
