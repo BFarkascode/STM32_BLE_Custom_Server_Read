@@ -1,4 +1,4 @@
-/* USER CODE BEGIN Header */
+//* USER CODE BEGIN Header */
 /**
   ******************************************************************************
   * @file    App/custom_app.c
@@ -92,7 +92,7 @@ static void Custom_Counter_Send_Notification(void);
 /* Temp_read */
 
 /* USER CODE BEGIN PFP */
-
+int32_t compensate_temperature(int32_t sensor_adc_readout, uint16_t dig_T1, int16_t dig_T2, int16_t dig_T3);
 /* USER CODE END PFP */
 
 /* Functions Definition ------------------------------------------------------*/
@@ -249,17 +249,6 @@ void Custom_APP_Init(void)
 
 /* USER CODE BEGIN FD */
 
-int32_t compensate_temperature(int32_t sensor_adc_readout, uint16_t dig_T1, int16_t dig_T2, int16_t dig_T3) {
-
-	int32_t var1, var2;
-
-	var1 = ((((sensor_adc_readout >> 3) - (dig_T1 << 1)))	* dig_T2) >> 11;
-	var2 = (((((sensor_adc_readout >> 4) - dig_T1) * ((sensor_adc_readout >> 4) - dig_T1)) >> 12) * dig_T3) >> 14;
-
-	return ((var1 + var2) * 5 + 128) >> 8;
-
-}
-
 /* USER CODE END FD */
 
 /*************************************************************
@@ -346,6 +335,17 @@ void Counter_Send_Notification_Task(void)												//this is what the task wil
   }
 
   return;
+}
+
+int32_t compensate_temperature(int32_t sensor_adc_readout, uint16_t dig_T1, int16_t dig_T2, int16_t dig_T3) {
+
+	int32_t var1, var2;
+
+	var1 = ((((sensor_adc_readout >> 3) - (dig_T1 << 1)))	* dig_T2) >> 11;
+	var2 = (((((sensor_adc_readout >> 4) - dig_T1) * ((sensor_adc_readout >> 4) - dig_T1)) >> 12) * dig_T3) >> 14;
+
+	return ((var1 + var2) * 5 + 128) >> 8;
+
 }
 
 /* USER CODE END FD_LOCAL_FUNCTIONS*/
