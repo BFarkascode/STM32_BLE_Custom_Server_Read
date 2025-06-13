@@ -1,10 +1,11 @@
+
 /*
- *  Created on: Mar 15, 2025
+ *  Created on: June 13, 2025
  *  Author: BalazsFarkas
- *  Project: STM32_TouchI2C_FMSC
- *  Processor: STM32F412ZG
- *  Program version: 1.0
- *  Header file: I2CDriver_STM32F4xx.h
+ *  Project: STM32_BLE_Custom_Server_Read
+ *  Processor: STM32WB55MM
+ *  Header version: 1.0
+ *  File: I2CDriver_STM32WB55MM.c
  *  Change history:
  */
 
